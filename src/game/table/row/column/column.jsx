@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 
-
-export default class Header extends Component {
+export default class Column extends Component {
   render() {
     return (
       <div>
-        Header
+        I'm a column
       </div>
     );
   }
