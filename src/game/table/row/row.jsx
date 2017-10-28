@@ -1,10 +1,10 @@
 import React, { Component, PropTypes } from 'react';
-import Column, { VALUE as CellValue } from './column/column.jsx';
+import Column from './column/column.jsx';
 
 export default class Row extends Component {
   static propTypes = {
     onColumnClick: PropTypes.func.isRequired,
-    columns: PropTypes.number.isRequired
+    columns: PropTypes.array.isRequired
   };
 
   handleColumnClick = this.handleColumnClick.bind(this);
@@ -13,8 +13,8 @@ export default class Row extends Component {
     this.props.onColumnClick(index);
   }
 
-  renderColumn(index) {
-    return <Column key={index} value={CellValue.EMPTY} onClick={() => { this.handleColumnClick(index); }} />;
+  renderColumn(cellValue, index) {
+    return <Column key={index} value={cellValue} onClick={() => { this.handleColumnClick(index); }} />;
   }
 
   render() {
@@ -22,7 +22,7 @@ export default class Row extends Component {
 
     return (
       <div>
-        {new Array(columns).fill(undefined).map((_, index) => this.renderColumn(index))}
+        {columns.map(this.renderColumn.bind(this))}
       </div>
     );
   }

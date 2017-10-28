@@ -1,16 +1,11 @@
 import React, { Component, PropTypes } from 'react';
-
-export const VALUE = {
-  EMPTY: -1,
-  O: 0,
-  X: 1
-};
+import { ColumnValue } from 'src/game/game.jsx';
 
 export default class Column extends Component {
 
   static propTypes = {
     onClick: PropTypes.func.isRequired,
-    value: PropTypes.oneOf(Object.keys(VALUE).map(key => VALUE[key]))
+    value: PropTypes.number
   }
 
   handleClick = this.handleClick.bind(this);

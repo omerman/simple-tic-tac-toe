@@ -4,19 +4,26 @@ import Row from './row/row.jsx';
 export default class Table extends Component {
 
   static propTypes = {
-    size: PropTypes.number.isRequired
+    board: PropTypes.arrayOf(PropTypes.array),
+    onCellClick: PropTypes.func.isRequired
   };
 
   handleColumnClick = this.handleColumnClick.bind(this);
 
   handleColumnClick(columnIndex, rowIndex) {
-    console.log(`column: ${columnIndex}, row: ${rowIndex}`);
+    this.props.onCellClick(columnIndex, rowIndex);
   }
 
   renderRows() {
-    const { size } = this.props;
-    return new Array(size).fill(undefined).map((_, index) => {
-      return <Row columns={size} key={index} onColumnClick={(columnIndex) => this.handleColumnClick(columnIndex, index)} />;
+    const { board } = this.props;
+    return new Array(board.length).fill(undefined).map((_, index) => {
+      return (
+        <Row
+          columns={board[index]}
+          key={index}
+          onColumnClick={(columnIndex) => this.handleColumnClick(columnIndex, index)}
+        />
+      );
     });
   }
 
