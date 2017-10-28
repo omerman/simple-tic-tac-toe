@@ -17,7 +17,7 @@ export default class Column extends Component {
   render() {
     const { value } = this.props;
     return (
-      <div onClick={this.handleClick}>
+      <div className="column" onClick={this.handleClick}>
         {value}
       </div>
     );

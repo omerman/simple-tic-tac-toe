@@ -21,7 +21,7 @@ export default class Row extends Component {
     const { columns } = this.props;
 
     return (
-      <div>
+      <div className="row">
         {columns.map(this.renderColumn.bind(this))}
       </div>
     );

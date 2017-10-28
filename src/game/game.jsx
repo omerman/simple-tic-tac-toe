@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import Table from './table/table.jsx';
 
 export const ColumnValue = {
-  EMPTY: -1,
-  O: 0,
-  X: 1
+  EMPTY: '',
+  O: 'O',
+  X: 'X'
 };
 
 export default class Game extends Component {
